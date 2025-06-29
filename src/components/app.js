@@ -50,6 +50,7 @@ const variants = {
     component: CircularCalendar,
     css: "assets/css/circular-calendar.css",
     js: ["assets/js/circular-calendar.js"],
+    preview: "assets/img/preview/circular-calendar.gif",
   },
   "classic-wall": {
     label: "Classic Wall Dial",
