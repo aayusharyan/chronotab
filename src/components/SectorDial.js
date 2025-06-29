@@ -49,15 +49,21 @@ const markup = `
   </div>
 </div>`;
 
-function zeroPad(num) { return num >= 10 ? String(num) : `0${num}`; }
-function twelveClock(h24) { if (h24 === 0) return 12; if (h24 > 12) return h24 - 12; return h24; }
+function zeroPad(num) {
+  return num >= 10 ? String(num) : `0${num}`;
+}
+function twelveClock(h24) {
+  if (h24 === 0) return 12;
+  if (h24 > 12) return h24 - 12;
+  return h24;
+}
 
 export default function SectorDial() {
   return van.raw(markup);
 }
 
 SectorDial.mount = () => {
-  const root = document.getElementById("clock-content") || document.body; // fallback
+  const root = document.getElementById("clock-container") || document.body; // fallback
   const svgEl = root.querySelector("svg");
   if (!svgEl) return;
 
@@ -67,7 +73,10 @@ SectorDial.mount = () => {
     for (let i = 0; i < 12; i++) {
       const deg = -90 + 30 * (i + 1);
       const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      t.setAttribute("transform", `rotate(${deg}) translate(34 0) rotate(${-deg})`);
+      t.setAttribute(
+        "transform",
+        `rotate(${deg}) translate(34 0) rotate(${-deg})`
+      );
       t.textContent = zeroPad(i + 1);
       faceGroup.appendChild(t);
     }
@@ -78,7 +87,9 @@ SectorDial.mount = () => {
   const gSeconds = svgEl.querySelector("g.seconds");
 
   // Apply CSS transition for smoothness
-  [gHours, gMinutes, gSeconds].forEach(g => { if (g) g.style.transition = "transform 0.4s"; });
+  [gHours, gMinutes, gSeconds].forEach((g) => {
+    if (g) g.style.transition = "transform 0.4s";
+  });
 
   // Initial time
   const now = new Date();
@@ -94,7 +105,9 @@ SectorDial.mount = () => {
     minutes: document.querySelector("span.control--minutes"),
     seconds: document.querySelector("span.control--seconds"),
   };
-  Object.entries(time).forEach(([k,v])=>{ spans[k].textContent = zeroPad(v); });
+  Object.entries(time).forEach(([k, v]) => {
+    spans[k].textContent = zeroPad(v);
+  });
   const applyTransforms = () => {
     gHours.setAttribute("transform", `rotate(${-15 + rotation.hours * 30})`);
     gMinutes.setAttribute("transform", `rotate(${rotation.minutes * 6})`);
@@ -121,9 +134,9 @@ SectorDial.mount = () => {
     spans[key].textContent = zeroPad(newTimeVal);
     applyTransforms();
   };
-  buttons.forEach(b => b.addEventListener("click", handleClick));
+  buttons.forEach((b) => b.addEventListener("click", handleClick));
 
   SectorDial.unmount = () => {
-    buttons.forEach(b => b.removeEventListener("click", handleClick));
+    buttons.forEach((b) => b.removeEventListener("click", handleClick));
   };
 };

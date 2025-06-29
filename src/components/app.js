@@ -43,6 +43,7 @@ const variants = {
     component: AmbientNeonRings,
     css: "assets/css/ambient-neon-rings.css",
     js: ["assets/js/ambient-neon-rings.js"],
+    preview: "assets/img/preview/ambient-neon-rings.gif",
   },
   "circular-calendar": {
     label: "Circular Calendar",
@@ -184,16 +185,21 @@ const variants = {
   // ← add the rest here the same way
 };
 
-// Build list array for cards (dir, label)
-const variantList = Object.entries(variants).map(([dir, v]) => [dir, v.label]);
+// Build list array for cards (dir, label, preview_path)
+const variantList = Object.entries(variants).map(([dir, v]) => [
+  dir,
+  v.label,
+  v.preview || "assets/img/placeholder.png",
+]);
 
 // Card component
-const Card = (dir, label) =>
+const Card = (dir, label, preview_path) =>
   div(
     { class: "column col-4 p-2" },
     div(
       {
         class: "card c-hand",
+        style: "border: 0px;",
         onclick: () => {
           localStorage.setItem("selectedClock", dir);
           showVariant(dir); // ← switch to the selected clock immediately
@@ -202,7 +208,7 @@ const Card = (dir, label) =>
       div(
         { class: "card-image" },
         img({
-          src: "assets/img/placeholder.png",
+          src: preview_path,
           alt: label,
           class: "img-responsive",
         })
@@ -257,7 +263,7 @@ function loadVariant(dir) {
   });
 
   // render component
-  const container = document.getElementById("clock-content");
+  const container = document.getElementById("tokitab-clock-container");
   if (!container) return;
   container.innerHTML = "";
   const comp = conf.component();
@@ -327,7 +333,8 @@ function showVariant(dir) {
 
   rootEl.innerHTML = "";
   const container = document.createElement("div");
-  container.id = "clock-content";
+  container.id = "tokitab-clock-container";
+  container.className = "tokitab-clock-container";
   rootEl.appendChild(container);
 
   loadVariant(dir);
@@ -346,7 +353,9 @@ const App = () =>
       h1({ class: "h2 text-center mb-8" }, "Select Your Clock Face"),
       div(
         { id: "clock-list", class: "columns col-gap-lg" },
-        variantList.map(([dir, label]) => Card(dir, label))
+        variantList.map(([dir, label, preview_path]) =>
+          Card(dir, label, preview_path)
+        )
       ),
       p(
         { class: "mt-10 text-center text-small text-secondary" },
@@ -354,7 +363,7 @@ const App = () =>
         code("?select"),
         " query."
       ),
-      div({ id: "clock-content" })
+      div({ id: "tokitab-clock-container", class: "tokitab-clock-container" })
     )
   );
 

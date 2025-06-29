@@ -1,3 +1,7 @@
 body {
-    background-color: black;
+  background-color: black;
+}
+
+.tokitab-clock-container > div {
+  height: 100vh;
 }
