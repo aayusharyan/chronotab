@@ -2,11 +2,11 @@
 # package-extension.sh - Build a minimal Chrome-extension ZIP for Web Store upload.
 #
 # Usage:  ./scripts/package-extension.sh [output-zip]
-# Default output is chronotab.zip in the project root.
+# Default output is tokitab.zip in the project root.
 
 set -euo pipefail
 
-OUT_ZIP="${1:-chronotab.zip}"
+OUT_ZIP="${1:-tokitab.zip}"
 TMP_DIR="$(mktemp -d)"
 
 # Ensure cleanup on exit
