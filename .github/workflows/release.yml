@@ -67,9 +67,12 @@ jobs:
           path: chronotab.zip
           retention-days: 30
 
+      - name: Debug - List files in workspace
+        run: ls -lh
+
       - name: Attach ZIP to GitHub Release
         if: github.event_name == 'release'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release upload "${{ github.event.release.tag_name }}" chronotab.zip --clobber
+          gh release upload "${{ github.event.release.tag_name }}" "$GITHUB_WORKSPACE/chronotab.zip" --clobber
