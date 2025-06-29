@@ -1,0 +1,27 @@
+## Clock Variant Credits
+
+- **ambient-neon-rings**: https://codepen.io/Maku2202/pen/MarRgK
+- **circular-calendar**: https://codepen.io/mattjuggins/pen/WGRRYx
+- **classic-wall**: https://codepen.io/opheliafl/pen/RaYbvL
+- **crt-glitch**: https://codepen.io/fearOfCode/pen/PoMyKQ
+- **duotone-circle**: https://codepen.io/mohebifar/pen/KwdeMz
+- **executive-analog**: https://codepen.io/imvpn22/pen/RwPvOgQ
+- **futuristic-hud**: https://codepen.io/icebob/pen/JYoQZg
+- **hybrid-wall-dial**: https://codepen.io/iliadraznin/pen/AjWWQr
+- **icon-blocks**: https://codepen.io/ky0suke/pen/MyNXWX
+- **legacy-quartz-dial**: https://codepen.io/rassadin/pen/kVeObN
+- **millisecond-burst**: https://codepen.io/jasonleewilson/pen/gPrxwX
+- **modern-desk**: https://codepen.io/bsmith/pen/QWRLye
+- **neon-glow-digital**: https://codepen.io/gau/pen/LjQwGp
+- **neon-text**: https://codepen.io/afarrar/pen/JRaEjP
+- **retro-flipboard**: https://codepen.io/gametroll/pen/wvozJKv
+- **scroll-down-digits**: https://codepen.io/DawidKrajewski/pen/dPpMXN
+- **scroll-up-digits**: https://codepen.io/Hyperplexed/pen/XWeaWGL
+- **sector-dial**: https://codepen.io/borntofrappe/pen/qGozVM
+- **stadium-chronograph**: https://codepen.io/vineethtrv/pen/GvROZV
+- **starry-night-scene**: https://codepen.io/kingmeers/pen/vGKoxj
+- **time-in-text**: https://codepen.io/searleb/pen/pvQaJB
+- **ultra-minimal**: https://codepen.io/kylewetton/pen/QJbOjw
+- **vintage-desk**: https://codepen.io/tstoik/pen/gaawRR
+- **wheel-of-time**: https://codepen.io/cbolson/pen/azoVvZm
+- **word-blocks**: https://codepen.io/graphilla/pen/zEZKpN

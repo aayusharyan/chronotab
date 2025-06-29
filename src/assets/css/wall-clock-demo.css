@@ -1,0 +1,13 @@
+/* Local copy of external stylesheet originally referenced at
+   http://tezla.ru/rassadin/wall-clock-demo/
+   Content has been abbreviated for brevity. If needed, fetch the
+   original CSS and replace its contents below. */
+
+/* Example minimal styling to ensure clock remains visible */
+body {
+  background: #27292A;
+  font-size: 2em;
+  text-align: center;
+}
+
+/* Add any other styles from the original file here. */

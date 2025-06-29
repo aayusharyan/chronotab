@@ -1,0 +1,41 @@
+{
+    // Workspace-level VSCode settings: formatting, validation, search exclusions, and performance tweaks.
+
+    // Formatting defaults.
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    // Path to shared Prettier config.
+    "prettier.configPath": "prettier.config.js",
+
+    // Hide Problems panel by default.
+    "problems.visibility": false,
+
+    // Settings for Trailing Spaces extension.
+    "trailing-spaces.trimOnSave": true,
+    "trailing-spaces.includeEmptyLines": true,
+    "trailing-spaces.highlightCurrentLine": true,
+
+    // Exclude heavy folders from search.
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/dist": true,
+      "**/.git": true,
+      "**/pnpm-lock.yaml": true
+    },
+
+    // Line endings & auto-save.
+    "files.eol": "\n",
+    "files.autoSave": "onFocusChange",
+
+    // Reduce file-watcher load on large folders.
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**": true,
+      "**/test-results/**": true
+    }
+  }

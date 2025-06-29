@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900|Dosis:300,400,600,700,800|Droid+Sans:400,700|Lato:300,400,700,900|PT+Sans:400,700|Ubuntu:300,400,500,700|Open+Sans:400,300,600,700|Roboto:400,300,500,700,900|Roboto+Condensed:400,300,700|Open+Sans+Condensed:300,700|Play:400,700|Maven+Pro:400,500,700,900&subset=latin,latin-ext);
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #222;
+  overflow: hidden;
+}
+
+svg {
+  position: absolute;
+  width: 800px;
+  height: 480px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMTU3NjkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(60%, #000000), color-stop(100%, #215769));
+  background-image: -moz-linear-gradient(#000000 60%, #215769 100%);
+  background-image: -webkit-linear-gradient(#000000 60%, #215769 100%);
+  background-image: linear-gradient(#000000 60%, #215769 100%);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.bgDot {
+  stroke: none;
+  fill: #215769;
+}
+
+.clockCircle {
+  fill: none;
+  stroke: #2a2a2a;
+}
+
+.clockArc {
+  fill: none;
+  stroke: #1bbccb;
+}
+
+.clockDot {
+  fill: #e9fafc;
+}
+
+.caption {
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+  fill: White;
+}
+
+.dayText {
+  font-size: 1.7rem;
+}
+
+.dateText {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.timeText {
+  font-family: "Open Sans";
+  font-size: 5rem;
+  font-weight: 600;
+  fill: White;
+}

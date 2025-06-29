@@ -1,0 +1,21 @@
+# macOS system files and directories
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Finder & resource fork files
+Icon?
+._*
+
+# Spotlight indexing files
+.Spotlight-V100
+
+# Trash directory
+.Trashes
+
+# File system events daemon
+.fseventsd
+
+# Thumbnails
+Thumbs.db
+ehthumbs.db

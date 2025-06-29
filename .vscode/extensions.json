@@ -1,0 +1,21 @@
+{
+    // Recommended VSCode extensions for this repository.
+    // Each entry targets an essential area of development (docs, formatting, linting, whitespace hygiene, CI/CD).
+
+    "recommendations": [
+      // Markdown authoring, preview, and export.
+      "shd101wyy.markdown-preview-enhanced",
+
+      // Opinionated code formatter (uses prettier.config.js).
+      "esbenp.prettier-vscode",
+
+      // Highlights and trims trailing whitespace.
+      "shardulm94.trailing-spaces",
+
+      // Syntax highlighting and completion for GitHub Actions workflows.
+      "GitHub.vscode-github-actions",
+
+      // Real-time ESLint feedback for JavaScript.
+      "dbaeumer.vscode-eslint"
+    ]
+  }
