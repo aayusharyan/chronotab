@@ -59,6 +59,23 @@ jobs:
           set -x
           bash scripts/package-extension.sh tokitab.zip
 
+      - name: Debug - List all files recursively
+        run: find . -type f | sort
+
+      - name: Debug - List files in root and src
+        run: |
+          ls -lh
+          ls -lh src || true
+
+      - name: Check if ZIP exists
+        run: |
+          if [ -f tokitab.zip ]; then
+            echo "ZIP found!"
+          else
+            echo "ZIP NOT FOUND!"
+            exit 1
+          fi
+
       # ----------------------------------------------
       # 4. Publish artifacts
       # ----------------------------------------------
