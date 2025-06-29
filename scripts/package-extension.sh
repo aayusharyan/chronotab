@@ -39,8 +39,8 @@ ls -lh "$TMP_DIR"
 ls -lh "$TMP_DIR/src" || true
 
 # 4. Create the ZIP (-X strips extra file metadata for smaller size)
-echo "[DEBUG] Creating ZIP in project root: ../$OUT_ZIP from $TMP_DIR"
-(cd "$TMP_DIR" && zip -r -X "../$OUT_ZIP" .)
+echo "[DEBUG] Creating ZIP in project root: $OLDPWD/$OUT_ZIP from $TMP_DIR"
+(cd "$TMP_DIR" && zip -r -X "$OLDPWD/$OUT_ZIP" .)
 
 # Check if ZIP was created
 if [[ -f "$OUT_ZIP" ]]; then
