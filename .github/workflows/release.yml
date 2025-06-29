@@ -1,0 +1,83 @@
+name: Release Build
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to push version bump
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ----------------------------------------------
+      # 1. Determine version from release tag or latest
+      # ----------------------------------------------
+      - name: Determine target version
+        id: get_version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            version="${{ github.event.release.tag_name }}"
+          else
+            version=$(gh api -H "Accept: application/vnd.github+json" \
+              /repos/${{ github.repository }}/releases/latest --jq .tag_name)
+          fi
+          clean_version=${version#v}  # strip leading v
+          echo "clean_version=$clean_version" >> "$GITHUB_OUTPUT"
+
+      # ----------------------------------------------
+      # 2. Bump manifest.json version if necessary
+      # ----------------------------------------------
+      - name: Update manifest.json version field
+        run: |
+          VERSION="${{ steps.get_version.outputs.clean_version }}"
+          sed -i -E "s/\"version\": \"[^\"]+\"/\"version\": \"${VERSION}\"/" manifest.json
+
+      - name: Commit and push version bump (if any)
+        env:
+          VERSION: ${{ steps.get_version.outputs.clean_version }}
+        run: |
+          if git diff --quiet manifest.json; then
+            echo "No version change detected."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git commit -m "chore: bump manifest version to ${VERSION}"
+          git push
+
+      # ----------------------------------------------
+      # 3. Build Web-Store ZIP
+      # ----------------------------------------------
+      - name: Install zip & rsync
+        run: sudo apt-get update && sudo apt-get install -y zip rsync
+
+      - name: Package extension
+        run: bash scripts/package-extension.sh chronotab.zip
+
+      # ----------------------------------------------
+      # 4. Publish artifacts
+      # ----------------------------------------------
+      - name: Upload artifact to workflow run
+        uses: actions/upload-artifact@v3
+        with:
+          name: chronotab-extension
+          path: chronotab.zip
+          retention-days: 30
+
+      - name: Attach ZIP to GitHub Release
+        if: github.event_name == 'release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" chronotab.zip --clobber

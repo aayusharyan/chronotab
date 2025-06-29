@@ -1,6 +1,6 @@
 {
-  "name": "Starry Hill New Tab",
-  "description": "Replace Chrome's new tab with a relaxing starry night animation.",
+  "name": "ChronoTab",
+  "description": "ChronoTab transforms your new tab into a customizable gallery of animated clock faces—pick a style, stay on time, and refresh your browsing experience.",
   "version": "1.0.0",
   "manifest_version": 3,
   "chrome_url_overrides": {
