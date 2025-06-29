@@ -1,6 +1,6 @@
 {
   "name": "TokiTab",
-  "description": "TokiTab transforms your new tab into a customizable gallery of animated clock faces—pick a style, stay on time, and refresh your browsing experience.",
+  "description": "TokiTab turns your new tab into a gallery of animated clock faces. Pick a style and stay on time.",
   "version": "0.1.9",
   "manifest_version": 3,
   "chrome_url_overrides": {
