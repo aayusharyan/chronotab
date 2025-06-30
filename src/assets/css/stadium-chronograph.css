@@ -1,12 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=BenchNine:300,400");
-*, *:after, *:before {
+@import url(/src/assets/fonts/benchnine/benchnine.css);
+*,
+*:after,
+*:before {
   box-sizing: border-box;
 }
 
 html {
   background: #222;
   overflow: hidden;
-  font-family: 'BenchNine', sans-serif;
+  font-family: "BenchNine", sans-serif;
 }
 
 .clock-container {
@@ -33,7 +35,7 @@ html {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
 }
 .clock-container .spear:after {
-  content: '';
+  content: "";
   position: absolute;
   border: 7px solid transparent;
   border-right-color: red;
@@ -41,7 +43,7 @@ html {
   top: -7px;
 }
 .clock-container .spear:before {
-  content: '';
+  content: "";
   position: absolute;
   border: 7px solid transparent;
   border-left-color: red;
@@ -58,7 +60,9 @@ html {
   position: relative;
   box-shadow: 0 0 25px 3px #000 inset;
 }
-.clock-container .clock-analog .second, .clock-container .clock-analog .minute, .clock-container .clock-analog .hour {
+.clock-container .clock-analog .second,
+.clock-container .clock-analog .minute,
+.clock-container .clock-analog .hour {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -71,7 +75,9 @@ html {
   transition: 0.2s 0.2s ease-in;
   transform: rotate(90deg);
 }
-.clock-container .clock-analog .second span, .clock-container .clock-analog .minute span, .clock-container .clock-analog .hour span {
+.clock-container .clock-analog .second span,
+.clock-container .clock-analog .minute span,
+.clock-container .clock-analog .hour span {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -80,8 +86,10 @@ html {
   transform-origin: 50%;
   z-index: 5;
 }
-.clock-container .clock-analog .second span:after, .clock-container .clock-analog .minute span:after, .clock-container .clock-analog .hour span:after {
-  content: '';
+.clock-container .clock-analog .second span:after,
+.clock-container .clock-analog .minute span:after,
+.clock-container .clock-analog .hour span:after {
+  content: "";
   width: 4px;
   height: 1px;
   background: #000;
@@ -90,7 +98,9 @@ html {
   top: -10%;
   opacity: 0.3;
 }
-.clock-container .clock-analog .second span:nth-child(5n + 2):after, .clock-container .clock-analog .minute span:nth-child(5n + 2):after, .clock-container .clock-analog .hour span:nth-child(5n + 2):after {
+.clock-container .clock-analog .second span:nth-child(5n + 2):after,
+.clock-container .clock-analog .minute span:nth-child(5n + 2):after,
+.clock-container .clock-analog .hour span:nth-child(5n + 2):after {
   width: 7px;
   opacity: 1;
   left: 110%;
@@ -108,7 +118,7 @@ html {
   transform: translate(5px, 12px);
 }
 .clock-container .clock-analog .hour:after {
-  content: '';
+  content: "";
   background: #fff;
   position: absolute;
   left: 50%;
@@ -128,7 +138,7 @@ html {
   transform: translate(10px, -7px) rotate(-9deg);
 }
 .clock-container .clock-analog .minute:after {
-  content: '';
+  content: "";
   background: #333;
   position: absolute;
   left: 50%;
@@ -166,7 +176,7 @@ html {
   position: absolute;
 }
 .clock-container .clock-analog .dail span:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 4px;
   height: 4px;
@@ -174,7 +184,7 @@ html {
   background-color: #7d7e7d;
   *zoom: 1;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=1, startColorstr='#FF7D7E7D', endColorstr='#FF0E0E0E');
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkN2U3ZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBlMGUwZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkN2U3ZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBlMGUwZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
   background-size: 100%;
   background-image: linear-gradient(to right, #7d7e7d 0%, #0e0e0e 100%);
   left: 50%;
@@ -196,7 +206,7 @@ html {
   box-shadow: 5px 0 15px #000;
 }
 .clock-container .clock-digital:after {
-  content: '';
+  content: "";
   position: absolute;
   border: 15px solid #8e0a0a;
   border-right: none;
