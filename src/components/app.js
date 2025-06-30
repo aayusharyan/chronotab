@@ -57,6 +57,7 @@ const variants = {
     component: ClassicWall,
     css: "assets/css/classic-wall.css",
     js: ["assets/js/classic-wall.js"],
+    preview: "assets/img/preview/classic-wall.gif",
   },
   "crt-glitch": {
     label: "CRT Glitch Clock",
@@ -93,6 +94,7 @@ const variants = {
     component: IconBlocks,
     css: "assets/css/icon-blocks.css",
     js: ["assets/js/icon-blocks.js"],
+    preview: "assets/img/preview/icon-blocks.gif",
   },
   "legacy-quartz-dial": {
     label: "Legacy Quartz Dial",
@@ -108,6 +110,7 @@ const variants = {
     component: MillisecondBurst,
     css: "assets/css/millisecond-burst.css",
     // JS logic reimplemented in component
+    preview: "assets/img/preview/millisecond-burst.gif",
   },
   "modern-desk": {
     label: "Modern Desk",
@@ -119,11 +122,13 @@ const variants = {
     label: "Neon Glow Digital",
     component: NeonGlowDigital,
     css: "assets/css/neon-glow-digital.css",
+    preview: "assets/img/preview/neon-glow-digital.gif",
   },
   "neon-text": {
     label: "Neon Text",
     component: NeonText,
     css: "assets/css/neon-text.css",
+    preview: "assets/img/preview/neon-text.gif",
   },
   "retro-flipboard": {
     label: "Retro Flipboard",
@@ -150,6 +155,7 @@ const variants = {
     label: "Stadium Chronograph",
     component: StadiumChronograph,
     css: "assets/css/stadium-chronograph.css",
+    preview: "assets/img/preview/stadium-chronograph.gif",
   },
   "starry-night-scene": {
     label: "Starry Night Scene",

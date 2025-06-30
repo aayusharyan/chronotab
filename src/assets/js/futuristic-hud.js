@@ -3,84 +3,109 @@ Inspired by https://dribbble.com/shots/2004657-Alarm-Clock-concept
  */
 var describeArc, polarToCartesian, setCaptions;
 
-polarToCartesian = function(centerX, centerY, radius, angleInDegrees) {
+polarToCartesian = function (centerX, centerY, radius, angleInDegrees) {
   var angleInRadians;
-  angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+  angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
   return {
     x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians)
+    y: centerY + radius * Math.sin(angleInRadians),
   };
 };
 
-describeArc = function(x, y, radius, startAngle, endAngle) {
+describeArc = function (x, y, radius, startAngle, endAngle) {
   var arcSweep, end, start;
   start = polarToCartesian(x, y, radius, endAngle);
   end = polarToCartesian(x, y, radius, startAngle);
-  arcSweep = endAngle - startAngle <= 180 ? '0' : '1';
-  return ['M', start.x, start.y, 'A', radius, radius, 0, arcSweep, 0, end.x, end.y].join(' ');
+  arcSweep = endAngle - startAngle <= 180 ? "0" : "1";
+  return [
+    "M",
+    start.x,
+    start.y,
+    "A",
+    radius,
+    radius,
+    0,
+    arcSweep,
+    0,
+    end.x,
+    end.y,
+  ].join(" ");
 };
 
-setCaptions = function() {
-  var dot, hour, hourArc, minArc, minute, now, pos;
+setCaptions = function () {
+  var hour, minute, now, hourArc, minArc, pos, dot;
   now = new Date();
   hour = now.getHours() % 12;
   minute = now.getMinutes();
-  hourArc = (hour * 60 + minute) / (12 * 60) * 360;
-  minArc = minute / 60 * 360;
-  $('.clockArc.hour').attr('d', describeArc(500, 240, 150, 0, hourArc));
-  $('.clockArc.minute').attr('d', describeArc(500, 240, 170, 0, minArc));
-  $('.clockDot.hour').attr('d', describeArc(500, 240, 150, hourArc - 3, hourArc));
-  $('.clockDot.minute').attr('d', describeArc(500, 240, 170, minArc - 1, minArc));
-  dot = $(".clockDot.hour");
-  pos = polarToCartesian(500, 240, 150, hourArc);
-  dot.attr("cx", pos.x);
-  dot.attr("cy", pos.y);
-  dot = $(".clockDot.minute");
-  pos = polarToCartesian(500, 240, 170, minArc);
-  dot.attr("cx", pos.x);
-  dot.attr("cy", pos.y);
-  return $('#time').text(moment().format('H:mm'));
+  hourArc = ((hour * 60 + minute) / (12 * 60)) * 360;
+  minArc = (minute / 60) * 360;
+  document.querySelectorAll(".clockArc.hour").forEach(function (el) {
+    el.setAttribute("d", describeArc(500, 240, 150, 0, hourArc));
+  });
+  document.querySelectorAll(".clockArc.minute").forEach(function (el) {
+    el.setAttribute("d", describeArc(500, 240, 170, 0, minArc));
+  });
+  document.querySelectorAll(".clockDot.hour").forEach(function (el) {
+    el.setAttribute("d", describeArc(500, 240, 150, hourArc - 3, hourArc));
+    pos = polarToCartesian(500, 240, 150, hourArc);
+    el.setAttribute("cx", pos.x);
+    el.setAttribute("cy", pos.y);
+  });
+  document.querySelectorAll(".clockDot.minute").forEach(function (el) {
+    el.setAttribute("d", describeArc(500, 240, 170, minArc - 1, minArc));
+    pos = polarToCartesian(500, 240, 170, minArc);
+    el.setAttribute("cx", pos.x);
+    el.setAttribute("cy", pos.y);
+  });
+  var timeEl = document.getElementById("time");
+  if (timeEl) timeEl.textContent = moment().format("H:mm");
 };
 
-$('#day').text(moment().format('dddd'));
+var dayEl = document.getElementById("day");
+if (dayEl) dayEl.textContent = moment().format("dddd");
 
-$('#date').text(moment().format('MMMM D'));
+var dateEl = document.getElementById("date");
+if (dateEl) dateEl.textContent = moment().format("MMMM D");
 
 setCaptions();
 
-setInterval(function() {
-  return setCaptions();
+setInterval(function () {
+  setCaptions();
 }, 10 * 1000);
 
-$(function() {
-  TweenMax.staggerFrom(".clockArc", .5, {
+// Animate arcs and text (no DOM ready wrapper needed)
+TweenMax.staggerFrom(
+  document.querySelectorAll(".clockArc"),
+  0.5,
+  {
     drawSVG: 0,
-    ease: Power3.easeOut
-  }, 0.3);
-  TweenMax.from("#time", 1.0, {
-    attr: {
-      y: 350
-    },
-    opacity: 0,
     ease: Power3.easeOut,
-    delay: 0.5
-  });
-  TweenMax.from(".dayText", 1.0, {
-    attr: {
-      y: 310
-    },
-    opacity: 0,
-    delay: 1.0,
-    ease: Power3.easeOut
-  });
-  return TweenMax.from(".dateText", 1.0, {
-    attr: {
-      y: 350
-    },
-    opacity: 0,
-    delay: 1.5,
-    ease: Power3.easeOut
-  });
+  },
+  0.3
+);
+TweenMax.from(document.getElementById("time"), 1.0, {
+  attr: {
+    y: 350,
+  },
+  opacity: 0,
+  ease: Power3.easeOut,
+  delay: 0.5,
+});
+TweenMax.from(document.querySelector(".dayText"), 1.0, {
+  attr: {
+    y: 310,
+  },
+  opacity: 0,
+  delay: 1.0,
+  ease: Power3.easeOut,
+});
+TweenMax.from(document.querySelector(".dateText"), 1.0, {
+  attr: {
+    y: 350,
+  },
+  opacity: 0,
+  delay: 1.5,
+  ease: Power3.easeOut,
 });
 
 // ---
