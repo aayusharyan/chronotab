@@ -7,6 +7,8 @@
     "newtab": "src/index.html"
   },
   "icons": {
+    "512": "src/assets/img/icon-512.png",
+    "256": "src/assets/img/icon-256.png",
     "128": "src/assets/img/icon-128.png",
     "48": "src/assets/img/icon-48.png",
     "16": "src/assets/img/icon-16.png"
