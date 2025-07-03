@@ -85,13 +85,25 @@ jobs:
           VERSION="${{ steps.get_version.outputs.clean_version }}"
           gh release upload "${{ github.event.release.tag_name }}" "$GITHUB_WORKSPACE/tokitab-${VERSION}.zip" --clobber
 
-      - name: Upload to Chrome Web Store
-        if: github.event_name == 'release'
-        uses: mobilefirstllc/cws-publish@latest
+      - name: Publish to Chrome Web Store
+        uses: puzzlers-labs/chrome-webstore-publish@v1
         with:
-          action: "testers" # one of: upload, publish, testers
+          extension_id: ${{ vars.EXTENSION_ID }}
+          zip_file_path: tokitab-${{ steps.get_version.outputs.clean_version }}.zip
           client_id: ${{ secrets.CLIENT_ID }}
           client_secret: ${{ secrets.CLIENT_SECRET }}
           refresh_token: ${{ secrets.REFRESH_TOKEN }}
-          extension_id: ${{ vars.EXTENSION_ID }}
-          zip_file: tokitab-${{ steps.get_version.outputs.clean_version }}.zip
+          publish_target: testers
+          expedited_review: true
+
+      # - name: Upload to Chrome Web Store
+      #   if: github.event_name == 'release'
+      #   uses: mobilefirstllc/cws-publish@latest
+      #   with:
+      #     action: "testers" # one of: upload, publish, testers
+      #     client_id: ${{ secrets.CLIENT_ID }}
+      #     client_secret: ${{ secrets.CLIENT_SECRET }}
+      #     refresh_token: ${{ secrets.REFRESH_TOKEN }}
+      #     extension_id: ${{ vars.EXTENSION_ID }}
+      #     zip_file: tokitab-${{ steps.get_version.outputs.clean_version }}.zip
+          
