@@ -34,19 +34,19 @@ jobs:
           VERSION="${{ steps.get_version.outputs.clean_version }}"
           sed -i -E "s/\"version\": \"[^\"]+\"/\"version\": \"${VERSION}\"/" manifest.json
 
-      - name: Commit and push version bump (if any)
-        env:
-          VERSION: ${{ steps.get_version.outputs.clean_version }}
-        run: |
-          if git diff --quiet manifest.json; then
-            echo "No version change detected."
-            exit 0
-          fi
-          git config user.name "Aayush Sinha"
-          git config user.email "aayush.aryan@me.com"
-          git add manifest.json
-          git commit -m "chore: bump manifest version to ${VERSION}"
-          git push origin HEAD:main
+      # - name: Commit and push version bump (if any)
+      #   env:
+      #     VERSION: ${{ steps.get_version.outputs.clean_version }}
+      #   run: |
+      #     if git diff --quiet manifest.json; then
+      #       echo "No version change detected."
+      #       exit 0
+      #     fi
+      #     git config user.name "Aayush Sinha"
+      #     git config user.email "aayush.aryan@me.com"
+      #     git add manifest.json
+      #     git commit -m "chore: bump manifest version to ${VERSION} [skip ci]"
+      #     git push origin HEAD:main
 
       # ----------------------------------------------
       # 3. Build Web-Store ZIP
@@ -106,4 +106,3 @@ jobs:
       #     refresh_token: ${{ secrets.REFRESH_TOKEN }}
       #     extension_id: ${{ vars.EXTENSION_ID }}
       #     zip_file: tokitab-${{ steps.get_version.outputs.clean_version }}.zip
-          
